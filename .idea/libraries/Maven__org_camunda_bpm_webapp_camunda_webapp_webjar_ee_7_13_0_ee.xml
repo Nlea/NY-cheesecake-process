@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.camunda.bpm.webapp:camunda-webapp-webjar-ee:7.13.0-ee">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/camunda/bpm/webapp/camunda-webapp-webjar-ee/7.13.0-ee/camunda-webapp-webjar-ee-7.13.0-ee.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/camunda/bpm/webapp/camunda-webapp-webjar-ee/7.13.0-ee/camunda-webapp-webjar-ee-7.13.0-ee-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/camunda/bpm/webapp/camunda-webapp-webjar-ee/7.13.0-ee/camunda-webapp-webjar-ee-7.13.0-ee-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

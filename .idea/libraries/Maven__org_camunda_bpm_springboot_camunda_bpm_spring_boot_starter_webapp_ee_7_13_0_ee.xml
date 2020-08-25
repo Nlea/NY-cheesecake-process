@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp-ee:7.13.0-ee">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/camunda/bpm/springboot/camunda-bpm-spring-boot-starter-webapp-ee/7.13.0-ee/camunda-bpm-spring-boot-starter-webapp-ee-7.13.0-ee.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/camunda/bpm/springboot/camunda-bpm-spring-boot-starter-webapp-ee/7.13.0-ee/camunda-bpm-spring-boot-starter-webapp-ee-7.13.0-ee-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/camunda/bpm/springboot/camunda-bpm-spring-boot-starter-webapp-ee/7.13.0-ee/camunda-bpm-spring-boot-starter-webapp-ee-7.13.0-ee-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
