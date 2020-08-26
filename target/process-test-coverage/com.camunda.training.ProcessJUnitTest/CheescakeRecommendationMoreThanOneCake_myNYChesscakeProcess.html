@@ -68,9 +68,9 @@
 
   <div id="info-box">
 	<div>Process Definition Name: myNYChesscakeProcess</div>
-	<div>Coverage: 19%</div>
+	<div>Coverage: 13.8%</div>
 	<div>Test Class: com.camunda.training.ProcessJUnitTest</div>
-	<div>TestMethod: invitationMessageCheescakeTestingContinues</div>
+	<div>TestMethod: CheescakeRecommendationMoreThanOneCake</div>
   </div>
   
   <!-- element to draw bpmn diagram in -->
@@ -198,17 +198,14 @@
           
         }
       }          
-			canvas.addMarker('CheckInvitationTask', 'highlight');
-			canvas.addMarker('BetterThanCheesecakeGateway', 'highlight');
-			canvas.addMarker('Activity_1jhbdtx', 'highlight');
-			$("g[data-element-id='NYTripEndedEvent']").addClass('highlight-running');
-			canvas.addMarker('CheesecakeTestingContinuedEndEvent', 'highlight');
-			canvas.addMarker('NYVisitPlannedStartEvent', 'highlight');
-			canvas.addMarker('InvitationForNewYorkActivityReceivedStartEvent', 'highlight');
-			$("g[data-element-id='Flow_0whrc1u']").find('path').attr('stroke', '#00ff00');
-			$("g[data-element-id='Flow_06hvgki']").find('path').attr('stroke', '#00ff00');
-			$("g[data-element-id='Flow_0upewrt']").find('path').attr('stroke', '#00ff00');
-			$("g[data-element-id='NoSequenceFlow']").find('path').attr('stroke', '#00ff00');
+			canvas.addMarker('Gateway_1aipave', 'highlight');
+			$("g[data-element-id='TasteCheescakeTask']").addClass('highlight-running');
+			$("g[data-element-id='Activity_0o078eq']").addClass('highlight-running');
+			canvas.addMarker('Activity_0wchypj', 'highlight');
+			canvas.addMarker('Event_0hemyng', 'highlight');
+			$("g[data-element-id='Flow_116e3kc']").find('path').attr('stroke', '#00ff00');
+			$("g[data-element-id='Flow_04v2fjq']").find('path').attr('stroke', '#00ff00');
+			$("g[data-element-id='Flow_0hqslz1']").find('path').attr('stroke', '#00ff00');
           //YOUR ANNOTATIONS GO HERE
 
         });

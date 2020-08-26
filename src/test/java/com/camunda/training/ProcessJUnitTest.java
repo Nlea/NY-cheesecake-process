@@ -150,5 +150,39 @@ public class ProcessJUnitTest {
 
     }
 
+    @Test
+    @Deployment(resources="cheescake-process.bpmn")
+    public void CheescakeRecommendationNoShop() {
+        Mocks.register("logger", new LoggerDelegate());
+
+        ProcessInstance processInstance = runtimeService()
+                .createProcessInstanceByKey("myNYChesscakeProcess")
+                .startBeforeActivity("TasteCheescakeTask")
+                .execute();
+        assertThat(processInstance).isWaitingAt("TasteCheescakeTask");
+        taskService().handleBpmnError((task().getId()), "err_NoShop");
+        assertThat(processInstance).hasPassed("CheescakeRejectedEndEvent");
+
+    }
+
+    @Test
+    @Deployment(resources="cheescake-process.bpmn")
+    public void CheescakeRecommendationMoreThanOneCake() {
+        Mocks.register("logger", new LoggerDelegate());
+
+        ProcessInstance processInstance = runtimeService()
+                .createProcessInstanceByKey("myNYChesscakeProcess")
+                .startBeforeActivity("TasteCheescakeTask")
+                .execute();
+        assertThat(processInstance).isWaitingAt("TasteCheescakeTask");
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put("numberOfCakes", "1");
+        taskService().handleEscalation((task().getId()), "es_MoreCheesecake", variables);
+        assertThat(processInstance).isWaitingAt("TasteCheescakeTask");
+
+
+
+    }
+
 
 }
