@@ -387,4 +387,6 @@ gradle-app.setting
 
 **/.idea/
 
+**/target/
+
 # End of https://www.gitignore.io/api/git,node,react,linux,macos,windows,typings,intellij,webstorm,visualstudiocode,gradle
