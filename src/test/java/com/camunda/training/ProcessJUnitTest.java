@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.flowcov.camunda.junit.rules.FlowCovProcessEngineRuleBuilder;
 import org.camunda.bpm.engine.runtime.Job;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.test.Deployment;
@@ -24,7 +25,9 @@ import static org.assertj.core.api.Assertions.*;
 public class ProcessJUnitTest {
   @Rule
   @ClassRule
-  public static ProcessEngineRule rule = TestCoverageProcessEngineRuleBuilder.create().build();
+  public static ProcessEngineRule rule = FlowCovProcessEngineRuleBuilder.create().build();
+
+          //TestCoverageProcessEngineRuleBuilder.create().build();
 
   @Before
   public void setup() {

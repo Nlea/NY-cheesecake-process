@@ -83,6 +83,12 @@
     <!-- Add your own dependencies here, if in compile scope, they are added to the jar -->
 
     <dependency>
+      <groupId>io.flowcov</groupId>
+      <artifactId>flowcov-camunda-core</artifactId>
+      <version>0.1.0</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.twitter4j</groupId>
       <artifactId>twitter4j-core</artifactId>
       <version>3.0.5</version>

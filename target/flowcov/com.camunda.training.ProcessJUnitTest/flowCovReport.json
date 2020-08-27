@@ -1,0 +1,364 @@
+{
+  "bpmnModels": [
+    {
+      "bpmnXml": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e\n\u003cbpmn:definitions xmlns:bpmn\u003d\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi\u003d\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc\u003d\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di\u003d\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:camunda\u003d\"http://camunda.org/schema/1.0/bpmn\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\" id\u003d\"Definitions_1\" targetNamespace\u003d\"http://bpmn.io/schema/bpmn\" exporter\u003d\"Camunda Modeler\" exporterVersion\u003d\"4.2.0\" camunda:diagramRelationId\u003d\"be89ef81-1b55-4f99-98dc-b483ec7b1c1c\"\u003e\n  \u003cbpmn:collaboration id\u003d\"Collaboration_1ro4iwv\"\u003e\n    \u003cbpmn:participant id\u003d\"MyNYCheescakeProcessParticipant\" name\u003d\"My NY Cheescake process\" processRef\u003d\"myNYChesscakeProcess\" /\u003e\n  \u003c/bpmn:collaboration\u003e\n  \u003cbpmn:process id\u003d\"myNYChesscakeProcess\" name\u003d\"Cheescake Process\" isExecutable\u003d\"true\"\u003e\n    \u003cbpmn:startEvent id\u003d\"NYVisitPlannedStartEvent\" name\u003d\"NY visit planned\" camunda:formKey\u003d\"embedded:app:forms/start.html\"\u003e\n      \u003cbpmn:outgoing\u003eFlow_06hvgki\u003c/bpmn:outgoing\u003e\n    \u003c/bpmn:startEvent\u003e\n    \u003cbpmn:endEvent id\u003d\"CheesecakeTestingEndedEndEvent1\" name\u003d\"NY Visit ended\"\u003e\n      \u003cbpmn:incoming\u003eFlow_1rs2oxd\u003c/bpmn:incoming\u003e\n    \u003c/bpmn:endEvent\u003e\n    \u003cbpmn:intermediateCatchEvent id\u003d\"NYTripEndedEvent\" name\u003d\"depature date\"\u003e\n      \u003cbpmn:incoming\u003eFlow_06hvgki\u003c/bpmn:incoming\u003e\n      \u003cbpmn:outgoing\u003eFlow_1rs2oxd\u003c/bpmn:outgoing\u003e\n      \u003cbpmn:timerEventDefinition id\u003d\"TimerEventDefinition_1n1rnzd\"\u003e\n        \u003cbpmn:timeDate xsi:type\u003d\"bpmn:tFormalExpression\"\u003e2020-11-11T12:13:14Z\u003c/bpmn:timeDate\u003e\n      \u003c/bpmn:timerEventDefinition\u003e\n    \u003c/bpmn:intermediateCatchEvent\u003e\n    \u003cbpmn:subProcess id\u003d\"Activity_0o078eq\" triggeredByEvent\u003d\"true\"\u003e\n      \u003cbpmn:startEvent id\u003d\"CheescakeRecommendationReceivedStartEvent\" name\u003d\"cheesecake recommendation received\" isInterrupting\u003d\"false\"\u003e\n        \u003cbpmn:outgoing\u003eFlow_183x28t\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:messageEventDefinition id\u003d\"MessageEventDefinition_1e9selb\" messageRef\u003d\"Message_13iw2jr\" /\u003e\n      \u003c/bpmn:startEvent\u003e\n      \u003cbpmn:exclusiveGateway id\u003d\"GoodCheescakeGateway\" name\u003d\"Cheesecake approved?\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0idiyw2\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eYesSequenceFlow\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:outgoing\u003eFlow_1ez982p\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:exclusiveGateway\u003e\n      \u003cbpmn:serviceTask id\u003d\"WriteToListTask\" name\u003d\"Write to list\" camunda:delegateExpression\u003d\"#{logger}\"\u003e\n        \u003cbpmn:incoming\u003eYesSequenceFlow\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_0ir02fk\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:serviceTask\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"YesSequenceFlow\" name\u003d\"yes\" sourceRef\u003d\"GoodCheescakeGateway\" targetRef\u003d\"WriteToListTask\"\u003e\n        \u003cbpmn:conditionExpression xsi:type\u003d\"bpmn:tFormalExpression\"\u003e#{approved}\u003c/bpmn:conditionExpression\u003e\n      \u003c/bpmn:sequenceFlow\u003e\n      \u003cbpmn:eventBasedGateway id\u003d\"Gateway_1krafy7\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0ir02fk\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_19odoz1\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:outgoing\u003eFlow_0qcwkpy\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:eventBasedGateway\u003e\n      \u003cbpmn:intermediateCatchEvent id\u003d\"FoodPoisedEvent\" name\u003d\"food poised\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0qcwkpy\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_035ag2y\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:messageEventDefinition id\u003d\"MessageEventDefinition_1x8u46h\" messageRef\u003d\"Message_1f5mh6d\" /\u003e\n      \u003c/bpmn:intermediateCatchEvent\u003e\n      \u003cbpmn:intermediateCatchEvent id\u003d\"N24HoursEvent\" name\u003d\"24 hours\"\u003e\n        \u003cbpmn:incoming\u003eFlow_19odoz1\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_0dvqzrr\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:timerEventDefinition id\u003d\"TimerEventDefinition_1cfoi24\"\u003e\n          \u003cbpmn:timeDuration xsi:type\u003d\"bpmn:tFormalExpression\"\u003eP1D\u003c/bpmn:timeDuration\u003e\n        \u003c/bpmn:timerEventDefinition\u003e\n      \u003c/bpmn:intermediateCatchEvent\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0ir02fk\" sourceRef\u003d\"WriteToListTask\" targetRef\u003d\"Gateway_1krafy7\" /\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_19odoz1\" sourceRef\u003d\"Gateway_1krafy7\" targetRef\u003d\"N24HoursEvent\" /\u003e\n      \u003cbpmn:serviceTask id\u003d\"PublishCheescakeRatingTask\" name\u003d\"Publish cheescake rating\" camunda:delegateExpression\u003d\"#{logger}\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0dvqzrr\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_0zmuen1\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:serviceTask\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0dvqzrr\" sourceRef\u003d\"N24HoursEvent\" targetRef\u003d\"PublishCheescakeRatingTask\" /\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0qcwkpy\" sourceRef\u003d\"Gateway_1krafy7\" targetRef\u003d\"FoodPoisedEvent\" /\u003e\n      \u003cbpmn:intermediateThrowEvent id\u003d\"BadCheesecakeEvent\" name\u003d\"not a good cake\"\u003e\n        \u003cbpmn:incoming\u003eFlow_035ag2y\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_0ciov6m\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:compensateEventDefinition id\u003d\"CompensateEventDefinition_06opa0t\" activityRef\u003d\"WriteToListTask\" /\u003e\n      \u003c/bpmn:intermediateThrowEvent\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_035ag2y\" sourceRef\u003d\"FoodPoisedEvent\" targetRef\u003d\"BadCheesecakeEvent\" /\u003e\n      \u003cbpmn:endEvent id\u003d\"CheesecakeApprovedEndEvent\" name\u003d\"cheesecake approved\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0zmuen1\u003c/bpmn:incoming\u003e\n      \u003c/bpmn:endEvent\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0zmuen1\" sourceRef\u003d\"PublishCheescakeRatingTask\" targetRef\u003d\"CheesecakeApprovedEndEvent\" /\u003e\n      \u003cbpmn:endEvent id\u003d\"CheescakeRejectedEndEvent\" name\u003d\"cheesecake rejected\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0tpvu6z\u003c/bpmn:incoming\u003e\n      \u003c/bpmn:endEvent\u003e\n      \u003cbpmn:sendTask id\u003d\"SendAComplaintTask\" name\u003d\"Send a complaint\" camunda:delegateExpression\u003d\"#{logger}\"\u003e\n        \u003cbpmn:incoming\u003eFlow_1vebd8o\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_0tpvu6z\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:sendTask\u003e\n      \u003cbpmn:exclusiveGateway id\u003d\"Gateway_0ezv07b\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0ciov6m\u003c/bpmn:incoming\u003e\n        \u003cbpmn:incoming\u003eFlow_02ip9d2\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_1vebd8o\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:exclusiveGateway\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_1ez982p\" sourceRef\u003d\"GoodCheescakeGateway\" targetRef\u003d\"Gateway_1tmvn3j\"\u003e\n        \u003cbpmn:conditionExpression xsi:type\u003d\"bpmn:tFormalExpression\"\u003e#{!approved}\u003c/bpmn:conditionExpression\u003e\n      \u003c/bpmn:sequenceFlow\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_1vebd8o\" sourceRef\u003d\"Gateway_0ezv07b\" targetRef\u003d\"SendAComplaintTask\" /\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0ciov6m\" sourceRef\u003d\"BadCheesecakeEvent\" targetRef\u003d\"Gateway_0ezv07b\" /\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0tpvu6z\" sourceRef\u003d\"SendAComplaintTask\" targetRef\u003d\"CheescakeRejectedEndEvent\" /\u003e\n      \u003cbpmn:boundaryEvent id\u003d\"BadCheescakeBoundaryEvent\" name\u003d\"not a good cake\" attachedToRef\u003d\"WriteToListTask\"\u003e\n        \u003cbpmn:compensateEventDefinition id\u003d\"CompensateEventDefinition_11c47b2\" /\u003e\n      \u003c/bpmn:boundaryEvent\u003e\n      \u003cbpmn:serviceTask id\u003d\"DeleteFromListTask\" name\u003d\"Delete from list\" isForCompensation\u003d\"true\" camunda:delegateExpression\u003d\"#{logger}\" /\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_183x28t\" sourceRef\u003d\"CheescakeRecommendationReceivedStartEvent\" targetRef\u003d\"Gateway_1aipave\" /\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0idiyw2\" sourceRef\u003d\"TasteCheescakeTask\" targetRef\u003d\"GoodCheescakeGateway\" /\u003e\n      \u003cbpmn:userTask id\u003d\"TasteCheescakeTask\" name\u003d\"Taste Cheescake\"\u003e\n        \u003cbpmn:incoming\u003eFlow_04v2fjq\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_0idiyw2\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:userTask\u003e\n      \u003cbpmn:boundaryEvent id\u003d\"Event_1eyc369\" name\u003d\"Shop does not exist\" attachedToRef\u003d\"TasteCheescakeTask\"\u003e\n        \u003cbpmn:outgoing\u003eFlow_1cp2w1d\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:errorEventDefinition id\u003d\"ErrorEventDefinition_0e6cs4u\" errorRef\u003d\"Error_1r2c1ij\" camunda:errorMessageVariable\u003d\"errMsgNoShop\" /\u003e\n      \u003c/bpmn:boundaryEvent\u003e\n      \u003cbpmn:exclusiveGateway id\u003d\"Gateway_1tmvn3j\"\u003e\n        \u003cbpmn:incoming\u003eFlow_1ez982p\u003c/bpmn:incoming\u003e\n        \u003cbpmn:incoming\u003eFlow_1cp2w1d\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_02ip9d2\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:exclusiveGateway\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_02ip9d2\" sourceRef\u003d\"Gateway_1tmvn3j\" targetRef\u003d\"Gateway_0ezv07b\" /\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_1cp2w1d\" sourceRef\u003d\"Event_1eyc369\" targetRef\u003d\"Gateway_1tmvn3j\" /\u003e\n      \u003cbpmn:boundaryEvent id\u003d\"Event_0hemyng\" name\u003d\"More than one cheescake\" cancelActivity\u003d\"false\" attachedToRef\u003d\"TasteCheescakeTask\"\u003e\n        \u003cbpmn:outgoing\u003eFlow_0hqslz1\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:escalationEventDefinition id\u003d\"EscalationEventDefinition_0wj41tu\" escalationRef\u003d\"Escalation_0nhdydn\" /\u003e\n      \u003c/bpmn:boundaryEvent\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0hqslz1\" sourceRef\u003d\"Event_0hemyng\" targetRef\u003d\"Activity_0wchypj\" /\u003e\n      \u003cbpmn:exclusiveGateway id\u003d\"Gateway_1aipave\"\u003e\n        \u003cbpmn:incoming\u003eFlow_183x28t\u003c/bpmn:incoming\u003e\n        \u003cbpmn:incoming\u003eFlow_116e3kc\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_04v2fjq\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:exclusiveGateway\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_04v2fjq\" sourceRef\u003d\"Gateway_1aipave\" targetRef\u003d\"TasteCheescakeTask\" /\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_116e3kc\" sourceRef\u003d\"Activity_0wchypj\" targetRef\u003d\"Gateway_1aipave\" /\u003e\n      \u003cbpmn:serviceTask id\u003d\"Activity_0wchypj\" name\u003d\"Create new Task\" camunda:delegateExpression\u003d\"#{logger}\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0hqslz1\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_116e3kc\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:multiInstanceLoopCharacteristics\u003e\n          \u003cbpmn:loopCardinality xsi:type\u003d\"bpmn:tFormalExpression\"\u003e#{numberOfCakes}\u003c/bpmn:loopCardinality\u003e\n        \u003c/bpmn:multiInstanceLoopCharacteristics\u003e\n      \u003c/bpmn:serviceTask\u003e\n      \u003cbpmn:association id\u003d\"Association_045wrhd\" associationDirection\u003d\"One\" sourceRef\u003d\"BadCheescakeBoundaryEvent\" targetRef\u003d\"DeleteFromListTask\" /\u003e\n      \u003cbpmn:textAnnotation id\u003d\"TextAnnotation_07t2y87\"\u003e\n        \u003cbpmn:text\u003eFor each addional Cheesecake\u003c/bpmn:text\u003e\n      \u003c/bpmn:textAnnotation\u003e\n      \u003cbpmn:association id\u003d\"Association_0f4dtwq\" sourceRef\u003d\"Activity_0wchypj\" targetRef\u003d\"TextAnnotation_07t2y87\" /\u003e\n    \u003c/bpmn:subProcess\u003e\n    \u003cbpmn:subProcess id\u003d\"Activity_1jhbdtx\" triggeredByEvent\u003d\"true\"\u003e\n      \u003cbpmn:startEvent id\u003d\"InvitationForNewYorkActivityReceivedStartEvent\" name\u003d\"invitation of a friend received\" isInterrupting\u003d\"false\"\u003e\n        \u003cbpmn:outgoing\u003eFlow_0upewrt\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:messageEventDefinition id\u003d\"MessageEventDefinition_08ta1bs\" messageRef\u003d\"Message_1mr26im\" /\u003e\n      \u003c/bpmn:startEvent\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0upewrt\" sourceRef\u003d\"InvitationForNewYorkActivityReceivedStartEvent\" targetRef\u003d\"CheckInvitationTask\" /\u003e\n      \u003cbpmn:exclusiveGateway id\u003d\"BetterThanCheesecakeGateway\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0whrc1u\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eNoSequenceFlow\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:outgoing\u003eYesSequenceFlow1\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:exclusiveGateway\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0whrc1u\" sourceRef\u003d\"CheckInvitationTask\" targetRef\u003d\"BetterThanCheesecakeGateway\" /\u003e\n      \u003cbpmn:userTask id\u003d\"CheckInvitationTask\" name\u003d\"Check invitation\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0upewrt\u003c/bpmn:incoming\u003e\n        \u003cbpmn:outgoing\u003eFlow_0whrc1u\u003c/bpmn:outgoing\u003e\n      \u003c/bpmn:userTask\u003e\n      \u003cbpmn:endEvent id\u003d\"CheesecakeTestingContinuedEndEvent\" name\u003d\"cheesecake testing continued\"\u003e\n        \u003cbpmn:incoming\u003eNoSequenceFlow\u003c/bpmn:incoming\u003e\n      \u003c/bpmn:endEvent\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"NoSequenceFlow\" sourceRef\u003d\"BetterThanCheesecakeGateway\" targetRef\u003d\"CheesecakeTestingContinuedEndEvent\"\u003e\n        \u003cbpmn:conditionExpression xsi:type\u003d\"bpmn:tFormalExpression\"\u003e#{!betterThanCake}\u003c/bpmn:conditionExpression\u003e\n      \u003c/bpmn:sequenceFlow\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"YesSequenceFlow1\" sourceRef\u003d\"BetterThanCheesecakeGateway\" targetRef\u003d\"AbortCheesecakeTestingEndEvent\"\u003e\n        \u003cbpmn:conditionExpression xsi:type\u003d\"bpmn:tFormalExpression\"\u003e#{betterThanCake}\u003c/bpmn:conditionExpression\u003e\n      \u003c/bpmn:sequenceFlow\u003e\n      \u003cbpmn:endEvent id\u003d\"AbortCheesecakeTestingEndEvent\" name\u003d\"cheesecake testing aborted\"\u003e\n        \u003cbpmn:incoming\u003eYesSequenceFlow1\u003c/bpmn:incoming\u003e\n        \u003cbpmn:errorEventDefinition id\u003d\"ErrorEventDefinition_0zzzj3u\" errorRef\u003d\"Error_1t61tnz\" /\u003e\n      \u003c/bpmn:endEvent\u003e\n    \u003c/bpmn:subProcess\u003e\n    \u003cbpmn:subProcess id\u003d\"Activity_0zb1tcs\" triggeredByEvent\u003d\"true\"\u003e\n      \u003cbpmn:startEvent id\u003d\"AbortCheesecakeTestingStartEvent\" name\u003d\"cheesecake testing aborted\"\u003e\n        \u003cbpmn:outgoing\u003eFlow_0qwb8h7\u003c/bpmn:outgoing\u003e\n        \u003cbpmn:errorEventDefinition id\u003d\"ErrorEventDefinition_0zf5q4z\" errorRef\u003d\"Error_1t61tnz\" camunda:errorMessageVariable\u003d\"errorMessageAbortTesting\" /\u003e\n      \u003c/bpmn:startEvent\u003e\n      \u003cbpmn:endEvent id\u003d\"CheesecakeTestingEndedEndEvent\" name\u003d\"cheesecake testing aborted\"\u003e\n        \u003cbpmn:incoming\u003eFlow_0qwb8h7\u003c/bpmn:incoming\u003e\n      \u003c/bpmn:endEvent\u003e\n      \u003cbpmn:sequenceFlow id\u003d\"Flow_0qwb8h7\" sourceRef\u003d\"AbortCheesecakeTestingStartEvent\" targetRef\u003d\"CheesecakeTestingEndedEndEvent\" /\u003e\n    \u003c/bpmn:subProcess\u003e\n    \u003cbpmn:sequenceFlow id\u003d\"Flow_06hvgki\" sourceRef\u003d\"NYVisitPlannedStartEvent\" targetRef\u003d\"NYTripEndedEvent\" /\u003e\n    \u003cbpmn:sequenceFlow id\u003d\"Flow_1rs2oxd\" sourceRef\u003d\"NYTripEndedEvent\" targetRef\u003d\"CheesecakeTestingEndedEndEvent1\" /\u003e\n  \u003c/bpmn:process\u003e\n  \u003cbpmn:message id\u003d\"Message_1mr26im\" name\u003d\"Msg_invite\" /\u003e\n  \u003cbpmn:message id\u003d\"Message_1f5mh6d\" name\u003d\"Msg_foodPoisend\" /\u003e\n  \u003cbpmn:error id\u003d\"Error_1t61tnz\" name\u003d\"Abort Chees Cake Testing\" errorCode\u003d\"Err_AbortCheesCakeTesting\" camunda:errorMessage\u003d\"The invitation of a friend was better than eating cake\" /\u003e\n  \u003cbpmn:error id\u003d\"Error_1p645hy\" name\u003d\"Error_No Shop\" errorCode\u003d\"Err_NoShop\" camunda:errorMessage\u003d\"Could not find the shop\" /\u003e\n  \u003cbpmn:message id\u003d\"Message_108hdtp\" name\u003d\"Message_07nhbm6\" /\u003e\n  \u003cbpmn:message id\u003d\"Message_1b10fmv\" name\u003d\"Message_2sdan1o\" /\u003e\n  \u003cbpmn:message id\u003d\"Message_13iw2jr\" name\u003d\"Msg_CheesecakeRecommendation\" /\u003e\n  \u003cbpmn:error id\u003d\"Error_1r2c1ij\" name\u003d\"Error_NoShop\" errorCode\u003d\"err_NoShop\" camunda:errorMessage\u003d\"This shop does not exist anymore\" /\u003e\n  \u003cbpmn:escalation id\u003d\"Escalation_0nhdydn\" name\u003d\"Escalation_MoreCheescake\" escalationCode\u003d\"es_MoreCheesecake\" /\u003e\n  \u003cbpmndi:BPMNDiagram id\u003d\"BPMNDiagram_1\"\u003e\n    \u003cbpmndi:BPMNPlane id\u003d\"BPMNPlane_1\" bpmnElement\u003d\"Collaboration_1ro4iwv\"\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Participant_0bxryz8_di\" bpmnElement\u003d\"MyNYCheescakeProcessParticipant\" isHorizontal\u003d\"true\"\u003e\n        \u003cdc:Bounds x\u003d\"170\" y\u003d\"80\" width\u003d\"1770\" height\u003d\"600\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_06hvgki_di\" bpmnElement\u003d\"Flow_06hvgki\"\u003e\n        \u003cdi:waypoint x\u003d\"268\" y\u003d\"150\" /\u003e\n        \u003cdi:waypoint x\u003d\"1052\" y\u003d\"150\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_1rs2oxd_di\" bpmnElement\u003d\"Flow_1rs2oxd\"\u003e\n        \u003cdi:waypoint x\u003d\"1088\" y\u003d\"150\" /\u003e\n        \u003cdi:waypoint x\u003d\"1832\" y\u003d\"150\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_1yudycj_di\" bpmnElement\u003d\"NYVisitPlannedStartEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"232\" y\u003d\"132\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"210\" y\u003d\"175\" width\u003d\"80\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_1qsxdnt_di\" bpmnElement\u003d\"CheesecakeTestingEndedEndEvent1\"\u003e\n        \u003cdc:Bounds x\u003d\"1832\" y\u003d\"132\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1814\" y\u003d\"175\" width\u003d\"73\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_04cg1ml_di\" bpmnElement\u003d\"NYTripEndedEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1052\" y\u003d\"132\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1037\" y\u003d\"175\" width\u003d\"68\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_1mwtnh7_di\" bpmnElement\u003d\"Activity_0o078eq\" isExpanded\u003d\"true\"\u003e\n        \u003cdc:Bounds x\u003d\"210\" y\u003d\"240\" width\u003d\"1210\" height\u003d\"400\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"TextAnnotation_07t2y87_di\" bpmnElement\u003d\"TextAnnotation_07t2y87\"\u003e\n        \u003cdc:Bounds x\u003d\"430\" y\u003d\"570\" width\u003d\"99.99305040770942\" height\u003d\"54.11415863602669\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0idiyw2_di\" bpmnElement\u003d\"Flow_0idiyw2\"\u003e\n        \u003cdi:waypoint x\u003d\"530\" y\u003d\"350\" /\u003e\n        \u003cdi:waypoint x\u003d\"615\" y\u003d\"350\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_183x28t_di\" bpmnElement\u003d\"Flow_183x28t\"\u003e\n        \u003cdi:waypoint x\u003d\"278\" y\u003d\"350\" /\u003e\n        \u003cdi:waypoint x\u003d\"325\" y\u003d\"350\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0tpvu6z_di\" bpmnElement\u003d\"Flow_0tpvu6z\"\u003e\n        \u003cdi:waypoint x\u003d\"1310\" y\u003d\"540\" /\u003e\n        \u003cdi:waypoint x\u003d\"1362\" y\u003d\"540\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0ciov6m_di\" bpmnElement\u003d\"Flow_0ciov6m\"\u003e\n        \u003cdi:waypoint x\u003d\"1130\" y\u003d\"448\" /\u003e\n        \u003cdi:waypoint x\u003d\"1130\" y\u003d\"515\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_1vebd8o_di\" bpmnElement\u003d\"Flow_1vebd8o\"\u003e\n        \u003cdi:waypoint x\u003d\"1155\" y\u003d\"540\" /\u003e\n        \u003cdi:waypoint x\u003d\"1210\" y\u003d\"540\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_1ez982p_di\" bpmnElement\u003d\"Flow_1ez982p\"\u003e\n        \u003cdi:waypoint x\u003d\"640\" y\u003d\"375\" /\u003e\n        \u003cdi:waypoint x\u003d\"640\" y\u003d\"515\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"640\" y\u003d\"82\" width\u003d\"31\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0zmuen1_di\" bpmnElement\u003d\"Flow_0zmuen1\"\u003e\n        \u003cdi:waypoint x\u003d\"1180\" y\u003d\"350\" /\u003e\n        \u003cdi:waypoint x\u003d\"1362\" y\u003d\"350\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_035ag2y_di\" bpmnElement\u003d\"Flow_035ag2y\"\u003e\n        \u003cdi:waypoint x\u003d\"1038\" y\u003d\"430\" /\u003e\n        \u003cdi:waypoint x\u003d\"1112\" y\u003d\"430\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0qcwkpy_di\" bpmnElement\u003d\"Flow_0qcwkpy\"\u003e\n        \u003cdi:waypoint x\u003d\"930\" y\u003d\"375\" /\u003e\n        \u003cdi:waypoint x\u003d\"930\" y\u003d\"430\" /\u003e\n        \u003cdi:waypoint x\u003d\"1002\" y\u003d\"430\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0dvqzrr_di\" bpmnElement\u003d\"Flow_0dvqzrr\"\u003e\n        \u003cdi:waypoint x\u003d\"1038\" y\u003d\"350\" /\u003e\n        \u003cdi:waypoint x\u003d\"1080\" y\u003d\"350\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_19odoz1_di\" bpmnElement\u003d\"Flow_19odoz1\"\u003e\n        \u003cdi:waypoint x\u003d\"955\" y\u003d\"350\" /\u003e\n        \u003cdi:waypoint x\u003d\"1002\" y\u003d\"350\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0ir02fk_di\" bpmnElement\u003d\"Flow_0ir02fk\"\u003e\n        \u003cdi:waypoint x\u003d\"850\" y\u003d\"350\" /\u003e\n        \u003cdi:waypoint x\u003d\"905\" y\u003d\"350\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_05qcbob_di\" bpmnElement\u003d\"YesSequenceFlow\"\u003e\n        \u003cdi:waypoint x\u003d\"665\" y\u003d\"350\" /\u003e\n        \u003cdi:waypoint x\u003d\"750\" y\u003d\"350\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"699\" y\u003d\"332\" width\u003d\"18\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_02ip9d2_di\" bpmnElement\u003d\"Flow_02ip9d2\"\u003e\n        \u003cdi:waypoint x\u003d\"665\" y\u003d\"540\" /\u003e\n        \u003cdi:waypoint x\u003d\"1105\" y\u003d\"540\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_1cp2w1d_di\" bpmnElement\u003d\"Flow_1cp2w1d\"\u003e\n        \u003cdi:waypoint x\u003d\"510\" y\u003d\"408\" /\u003e\n        \u003cdi:waypoint x\u003d\"510\" y\u003d\"540\" /\u003e\n        \u003cdi:waypoint x\u003d\"615\" y\u003d\"540\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0hqslz1_di\" bpmnElement\u003d\"Flow_0hqslz1\"\u003e\n        \u003cdi:waypoint x\u003d\"460\" y\u003d\"408\" /\u003e\n        \u003cdi:waypoint x\u003d\"460\" y\u003d\"500\" /\u003e\n        \u003cdi:waypoint x\u003d\"440\" y\u003d\"500\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_04v2fjq_di\" bpmnElement\u003d\"Flow_04v2fjq\"\u003e\n        \u003cdi:waypoint x\u003d\"375\" y\u003d\"350\" /\u003e\n        \u003cdi:waypoint x\u003d\"430\" y\u003d\"350\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_116e3kc_di\" bpmnElement\u003d\"Flow_116e3kc\"\u003e\n        \u003cdi:waypoint x\u003d\"350\" y\u003d\"460\" /\u003e\n        \u003cdi:waypoint x\u003d\"350\" y\u003d\"375\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Gateway_1of8rs1_di\" bpmnElement\u003d\"GoodCheescakeGateway\" isMarkerVisible\u003d\"true\"\u003e\n        \u003cdc:Bounds x\u003d\"615\" y\u003d\"325\" width\u003d\"50\" height\u003d\"50\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"609\" y\u003d\"295\" width\u003d\"62\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_1s8egst_di\" bpmnElement\u003d\"WriteToListTask\"\u003e\n        \u003cdc:Bounds x\u003d\"750\" y\u003d\"310\" width\u003d\"100\" height\u003d\"80\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Gateway_1gxguai_di\" bpmnElement\u003d\"Gateway_1krafy7\"\u003e\n        \u003cdc:Bounds x\u003d\"905\" y\u003d\"325\" width\u003d\"50\" height\u003d\"50\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_1dldy02_di\" bpmnElement\u003d\"FoodPoisedEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1002\" y\u003d\"412\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"992\" y\u003d\"455\" width\u003d\"57\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_0kbmxl2_di\" bpmnElement\u003d\"N24HoursEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1002\" y\u003d\"332\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"998\" y\u003d\"375\" width\u003d\"44\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_0dumpoo_di\" bpmnElement\u003d\"PublishCheescakeRatingTask\"\u003e\n        \u003cdc:Bounds x\u003d\"1080\" y\u003d\"310\" width\u003d\"100\" height\u003d\"80\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_0u6fg5z_di\" bpmnElement\u003d\"BadCheesecakeEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1112\" y\u003d\"412\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1150\" y\u003d\"453\" width\u003d\"79\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_0s4zf2i_di\" bpmnElement\u003d\"CheesecakeApprovedEndEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1362\" y\u003d\"332\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1351\" y\u003d\"375\" width\u003d\"59\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_05egw7g_di\" bpmnElement\u003d\"CheescakeRejectedEndEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1362\" y\u003d\"522\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1351\" y\u003d\"565\" width\u003d\"59\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_0oeo997_di\" bpmnElement\u003d\"SendAComplaintTask\"\u003e\n        \u003cdc:Bounds x\u003d\"1210\" y\u003d\"500\" width\u003d\"100\" height\u003d\"80\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Gateway_0ezv07b_di\" bpmnElement\u003d\"Gateway_0ezv07b\" isMarkerVisible\u003d\"true\"\u003e\n        \u003cdc:Bounds x\u003d\"1105\" y\u003d\"515\" width\u003d\"50\" height\u003d\"50\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_1jyhah4_di\" bpmnElement\u003d\"DeleteFromListTask\"\u003e\n        \u003cdc:Bounds x\u003d\"800\" y\u003d\"430\" width\u003d\"100\" height\u003d\"80\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_1k2qbfq_di\" bpmnElement\u003d\"TasteCheescakeTask\"\u003e\n        \u003cdc:Bounds x\u003d\"430\" y\u003d\"310\" width\u003d\"100\" height\u003d\"80\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Gateway_1tmvn3j_di\" bpmnElement\u003d\"Gateway_1tmvn3j\" isMarkerVisible\u003d\"true\"\u003e\n        \u003cdc:Bounds x\u003d\"615\" y\u003d\"515\" width\u003d\"50\" height\u003d\"50\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_0gwt59p_di\" bpmnElement\u003d\"CheescakeRecommendationReceivedStartEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"242\" y\u003d\"332\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"219\" y\u003d\"375\" width\u003d\"82\" height\u003d\"40\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Gateway_1aipave_di\" bpmnElement\u003d\"Gateway_1aipave\" isMarkerVisible\u003d\"true\"\u003e\n        \u003cdc:Bounds x\u003d\"325\" y\u003d\"325\" width\u003d\"50\" height\u003d\"50\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_1dl2u15_di\" bpmnElement\u003d\"Activity_0wchypj\"\u003e\n        \u003cdc:Bounds x\u003d\"340\" y\u003d\"460\" width\u003d\"100\" height\u003d\"80\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Association_045wrhd_di\" bpmnElement\u003d\"Association_045wrhd\"\u003e\n        \u003cdi:waypoint x\u003d\"780\" y\u003d\"408\" /\u003e\n        \u003cdi:waypoint x\u003d\"780\" y\u003d\"470\" /\u003e\n        \u003cdi:waypoint x\u003d\"800\" y\u003d\"470\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Association_0f4dtwq_di\" bpmnElement\u003d\"Association_0f4dtwq\"\u003e\n        \u003cdi:waypoint x\u003d\"432\" y\u003d\"540\" /\u003e\n        \u003cdi:waypoint x\u003d\"464\" y\u003d\"570\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_1cann0j_di\" bpmnElement\u003d\"BadCheescakeBoundaryEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"762\" y\u003d\"372\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"790\" y\u003d\"403\" width\u003d\"79\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_1ewvbuq_di\" bpmnElement\u003d\"Event_1eyc369\"\u003e\n        \u003cdc:Bounds x\u003d\"492\" y\u003d\"372\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"514\" y\u003d\"416\" width\u003d\"71\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_0f1oqz7_di\" bpmnElement\u003d\"Event_0hemyng\"\u003e\n        \u003cdc:Bounds x\u003d\"442\" y\u003d\"372\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"384\" y\u003d\"406\" width\u003d\"71\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_0bmk03h_di\" bpmnElement\u003d\"Activity_1jhbdtx\" isExpanded\u003d\"true\"\u003e\n        \u003cdc:Bounds x\u003d\"1440\" y\u003d\"250\" width\u003d\"480\" height\u003d\"212\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0gylqjs_di\" bpmnElement\u003d\"YesSequenceFlow1\"\u003e\n        \u003cdi:waypoint x\u003d\"1775\" y\u003d\"310\" /\u003e\n        \u003cdi:waypoint x\u003d\"1842\" y\u003d\"310\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1800\" y\u003d\"432\" width\u003d\"18\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0fmo86q_di\" bpmnElement\u003d\"NoSequenceFlow\"\u003e\n        \u003cdi:waypoint x\u003d\"1750\" y\u003d\"335\" /\u003e\n        \u003cdi:waypoint x\u003d\"1750\" y\u003d\"412\" /\u003e\n        \u003cdi:waypoint x\u003d\"1842\" y\u003d\"412\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1759\" y\u003d\"532\" width\u003d\"13\" height\u003d\"14\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0whrc1u_di\" bpmnElement\u003d\"Flow_0whrc1u\"\u003e\n        \u003cdi:waypoint x\u003d\"1670\" y\u003d\"310\" /\u003e\n        \u003cdi:waypoint x\u003d\"1725\" y\u003d\"310\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0upewrt_di\" bpmnElement\u003d\"Flow_0upewrt\"\u003e\n        \u003cdi:waypoint x\u003d\"1516\" y\u003d\"310\" /\u003e\n        \u003cdi:waypoint x\u003d\"1570\" y\u003d\"310\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_0s0c3se_di\" bpmnElement\u003d\"InvitationForNewYorkActivityReceivedStartEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1480\" y\u003d\"292\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1462\" y\u003d\"335\" width\u003d\"73\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Gateway_0auhggp_di\" bpmnElement\u003d\"BetterThanCheesecakeGateway\" isMarkerVisible\u003d\"true\"\u003e\n        \u003cdc:Bounds x\u003d\"1725\" y\u003d\"285\" width\u003d\"50\" height\u003d\"50\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1718\" y\u003d\"396\" width\u003d\"65\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_1fo8mcw_di\" bpmnElement\u003d\"CheckInvitationTask\"\u003e\n        \u003cdc:Bounds x\u003d\"1570\" y\u003d\"270\" width\u003d\"100\" height\u003d\"80\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_05xbemg_di\" bpmnElement\u003d\"CheesecakeTestingContinuedEndEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1842\" y\u003d\"394\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1818\" y\u003d\"437\" width\u003d\"84\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_1rgucbc_di\" bpmnElement\u003d\"AbortCheesecakeTestingEndEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1842\" y\u003d\"292\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1824\" y\u003d\"335\" width\u003d\"73\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Activity_079m391_di\" bpmnElement\u003d\"Activity_0zb1tcs\" isExpanded\u003d\"true\"\u003e\n        \u003cdc:Bounds x\u003d\"1460\" y\u003d\"490\" width\u003d\"240\" height\u003d\"120\" /\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNEdge id\u003d\"Flow_0qwb8h7_di\" bpmnElement\u003d\"Flow_0qwb8h7\"\u003e\n        \u003cdi:waypoint x\u003d\"1516\" y\u003d\"530\" /\u003e\n        \u003cdi:waypoint x\u003d\"1640\" y\u003d\"530\" /\u003e\n      \u003c/bpmndi:BPMNEdge\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_14nfuv8_di\" bpmnElement\u003d\"AbortCheesecakeTestingStartEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1480\" y\u003d\"512\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1462\" y\u003d\"555\" width\u003d\"73\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n      \u003cbpmndi:BPMNShape id\u003d\"Event_0ucu80s_di\" bpmnElement\u003d\"CheesecakeTestingEndedEndEvent\"\u003e\n        \u003cdc:Bounds x\u003d\"1640\" y\u003d\"512\" width\u003d\"36\" height\u003d\"36\" /\u003e\n        \u003cbpmndi:BPMNLabel\u003e\n          \u003cdc:Bounds x\u003d\"1622\" y\u003d\"555\" width\u003d\"73\" height\u003d\"27\" /\u003e\n        \u003c/bpmndi:BPMNLabel\u003e\n      \u003c/bpmndi:BPMNShape\u003e\n    \u003c/bpmndi:BPMNPlane\u003e\n  \u003c/bpmndi:BPMNDiagram\u003e\n\u003c/bpmn:definitions\u003e\n",
+      "name": "Cheescake Process",
+      "processDefinitionKey": "myNYChesscakeProcess",
+      "hash": -873529867,
+      "testClasses": [
+        {
+          "name": "com.camunda.training.ProcessJUnitTest",
+          "executionEndTime": "2020-08-26T16:41:41.7032",
+          "testMethods": [
+            {
+              "name": "testHappyPath",
+              "coverage": 0.08620689655172414,
+              "flowNodes": [
+                {
+                  "key": "CheesecakeTestingEndedEndEvent1",
+                  "ended": true
+                },
+                {
+                  "key": "NYTripEndedEvent",
+                  "ended": true
+                },
+                {
+                  "key": "NYVisitPlannedStartEvent",
+                  "ended": true
+                }
+              ],
+              "sequenceFlowIds": [
+                "Flow_1rs2oxd",
+                "Flow_06hvgki"
+              ]
+            },
+            {
+              "name": "CheescakeRecommendationCheesecakeGoneBad",
+              "coverage": 0.3103448275862069,
+              "flowNodes": [
+                {
+                  "key": "GoodCheescakeGateway",
+                  "ended": true
+                },
+                {
+                  "key": "Gateway_1krafy7",
+                  "ended": true
+                },
+                {
+                  "key": "WriteToListTask",
+                  "ended": true
+                },
+                {
+                  "key": "DeleteFromListTask",
+                  "ended": true
+                },
+                {
+                  "key": "CheescakeRejectedEndEvent",
+                  "ended": true
+                },
+                {
+                  "key": "FoodPoisedEvent",
+                  "ended": true
+                },
+                {
+                  "key": "SendAComplaintTask",
+                  "ended": true
+                },
+                {
+                  "key": "BadCheescakeBoundaryEvent",
+                  "ended": true
+                },
+                {
+                  "key": "Gateway_0ezv07b",
+                  "ended": true
+                },
+                {
+                  "key": "Activity_0o078eq",
+                  "ended": true
+                },
+                {
+                  "key": "BadCheesecakeEvent",
+                  "ended": true
+                }
+              ],
+              "sequenceFlowIds": [
+                "Flow_0idiyw2",
+                "Flow_0ir02fk",
+                "Flow_1vebd8o",
+                "Flow_0tpvu6z",
+                "YesSequenceFlow",
+                "Flow_035ag2y",
+                "Flow_0ciov6m"
+              ]
+            },
+            {
+              "name": "invitationMessageCheescakeTestingContinues",
+              "coverage": 0.1896551724137931,
+              "flowNodes": [
+                {
+                  "key": "CheckInvitationTask",
+                  "ended": true
+                },
+                {
+                  "key": "BetterThanCheesecakeGateway",
+                  "ended": true
+                },
+                {
+                  "key": "Activity_1jhbdtx",
+                  "ended": true
+                },
+                {
+                  "key": "CheesecakeTestingContinuedEndEvent",
+                  "ended": true
+                },
+                {
+                  "key": "NYTripEndedEvent",
+                  "ended": true
+                },
+                {
+                  "key": "NYVisitPlannedStartEvent",
+                  "ended": true
+                },
+                {
+                  "key": "InvitationForNewYorkActivityReceivedStartEvent",
+                  "ended": true
+                }
+              ],
+              "sequenceFlowIds": [
+                "Flow_0whrc1u",
+                "Flow_06hvgki",
+                "Flow_0upewrt",
+                "NoSequenceFlow"
+              ]
+            },
+            {
+              "name": "invitationMessageCheescakeTestingAborted",
+              "coverage": 0.25862068965517243,
+              "flowNodes": [
+                {
+                  "key": "CheckInvitationTask",
+                  "ended": true
+                },
+                {
+                  "key": "BetterThanCheesecakeGateway",
+                  "ended": true
+                },
+                {
+                  "key": "Activity_1jhbdtx",
+                  "ended": true
+                },
+                {
+                  "key": "CheesecakeTestingEndedEndEvent",
+                  "ended": true
+                },
+                {
+                  "key": "AbortCheesecakeTestingEndEvent",
+                  "ended": true
+                },
+                {
+                  "key": "NYTripEndedEvent",
+                  "ended": true
+                },
+                {
+                  "key": "AbortCheesecakeTestingStartEvent",
+                  "ended": true
+                },
+                {
+                  "key": "NYVisitPlannedStartEvent",
+                  "ended": true
+                },
+                {
+                  "key": "InvitationForNewYorkActivityReceivedStartEvent",
+                  "ended": true
+                },
+                {
+                  "key": "Activity_0zb1tcs",
+                  "ended": true
+                }
+              ],
+              "sequenceFlowIds": [
+                "Flow_0whrc1u",
+                "YesSequenceFlow1",
+                "Flow_0qwb8h7",
+                "Flow_06hvgki",
+                "Flow_0upewrt"
+              ]
+            },
+            {
+              "name": "CheescakeRecommendationCheesecakeRejected",
+              "coverage": 0.1896551724137931,
+              "flowNodes": [
+                {
+                  "key": "GoodCheescakeGateway",
+                  "ended": true
+                },
+                {
+                  "key": "Gateway_1tmvn3j",
+                  "ended": true
+                },
+                {
+                  "key": "CheescakeRejectedEndEvent",
+                  "ended": true
+                },
+                {
+                  "key": "SendAComplaintTask",
+                  "ended": true
+                },
+                {
+                  "key": "Gateway_0ezv07b",
+                  "ended": true
+                },
+                {
+                  "key": "Activity_0o078eq",
+                  "ended": true
+                }
+              ],
+              "sequenceFlowIds": [
+                "Flow_1ez982p",
+                "Flow_02ip9d2",
+                "Flow_0idiyw2",
+                "Flow_1vebd8o",
+                "Flow_0tpvu6z"
+              ]
+            },
+            {
+              "name": "CheescakeRecommendationMsgHappyPath",
+              "coverage": 0.3448275862068966,
+              "flowNodes": [
+                {
+                  "key": "GoodCheescakeGateway",
+                  "ended": true
+                },
+                {
+                  "key": "Gateway_1aipave",
+                  "ended": true
+                },
+                {
+                  "key": "Gateway_1krafy7",
+                  "ended": true
+                },
+                {
+                  "key": "WriteToListTask",
+                  "ended": true
+                },
+                {
+                  "key": "TasteCheescakeTask",
+                  "ended": true
+                },
+                {
+                  "key": "CheesecakeApprovedEndEvent",
+                  "ended": true
+                },
+                {
+                  "key": "NYTripEndedEvent",
+                  "ended": true
+                },
+                {
+                  "key": "PublishCheescakeRatingTask",
+                  "ended": true
+                },
+                {
+                  "key": "NYVisitPlannedStartEvent",
+                  "ended": true
+                },
+                {
+                  "key": "CheescakeRecommendationReceivedStartEvent",
+                  "ended": true
+                },
+                {
+                  "key": "Activity_0o078eq",
+                  "ended": true
+                },
+                {
+                  "key": "N24HoursEvent",
+                  "ended": true
+                }
+              ],
+              "sequenceFlowIds": [
+                "Flow_0zmuen1",
+                "Flow_0dvqzrr",
+                "Flow_0idiyw2",
+                "Flow_0ir02fk",
+                "Flow_06hvgki",
+                "Flow_04v2fjq",
+                "YesSequenceFlow",
+                "Flow_183x28t"
+              ]
+            },
+            {
+              "name": "CheescakeRecommendationNoShop",
+              "coverage": 0.1896551724137931,
+              "flowNodes": [
+                {
+                  "key": "Event_1eyc369",
+                  "ended": true
+                },
+                {
+                  "key": "Gateway_1tmvn3j",
+                  "ended": true
+                },
+                {
+                  "key": "TasteCheescakeTask",
+                  "ended": true
+                },
+                {
+                  "key": "CheescakeRejectedEndEvent",
+                  "ended": true
+                },
+                {
+                  "key": "SendAComplaintTask",
+                  "ended": true
+                },
+                {
+                  "key": "Gateway_0ezv07b",
+                  "ended": true
+                },
+                {
+                  "key": "Activity_0o078eq",
+                  "ended": true
+                }
+              ],
+              "sequenceFlowIds": [
+                "Flow_02ip9d2",
+                "Flow_1vebd8o",
+                "Flow_0tpvu6z",
+                "Flow_1cp2w1d"
+              ]
+            },
+            {
+              "name": "CheescakeRecommendationMoreThanOneCake",
+              "coverage": 0.13793103448275862,
+              "flowNodes": [
+                {
+                  "key": "Gateway_1aipave",
+                  "ended": true
+                },
+                {
+                  "key": "TasteCheescakeTask",
+                  "ended": true
+                },
+                {
+                  "key": "Activity_0wchypj",
+                  "ended": true
+                },
+                {
+                  "key": "Activity_0o078eq",
+                  "ended": true
+                },
+                {
+                  "key": "Event_0hemyng",
+                  "ended": true
+                }
+              ],
+              "sequenceFlowIds": [
+                "Flow_116e3kc",
+                "Flow_04v2fjq",
+                "Flow_0hqslz1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
