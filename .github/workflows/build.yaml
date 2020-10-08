@@ -22,9 +22,7 @@ jobs:
 
       - name: Upload Workflow Coverage
         run: >-
-          curl -so flowcov.sh https://raw.githubusercontent.com/FlowSquad/flowcov-bash/0.2.1/flowcov.sh;
-          chmod +x ./flowcov.sh;
-          ./flowcov.sh --repository-id $REPOSITORY_ID --api-key $API_KEY;
+          bash <(curl -s https://bash.flowcov.io/prepare-v0.3.0) -v
         env:
-          API_KEY: ${{ secrets.FLOWCOV_API_KEY }}
-          REPOSITORY_ID: ${{ secrets.FLOWCOV_REPOSITORY_ID }}
+          FLOWCOV_API_KEY: ${{ secrets.FLOWCOV_API_KEY }}
+          FLOWCOV_REPOSITORY_ID: ${{ secrets.FLOWCOV_REPOSITORY_ID }}
