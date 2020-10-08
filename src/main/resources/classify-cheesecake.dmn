@@ -13,10 +13,7 @@
     <informationRequirement id="InformationRequirement_058gn17">
       <requiredInput href="#InputData_07c9w8s" />
     </informationRequirement>
-    <informationRequirement id="InformationRequirement_1rtuquc">
-      <requiredInput href="#InputData_0ypwwxy" />
-    </informationRequirement>
-    <decisionTable id="DecisionTable_099s5n9">
+    <decisionTable id="DecisionTable_099s5n9" hitPolicy="FIRST">
       <input id="Input_1" label="Diet">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text>diet</text>
@@ -51,7 +48,6 @@
           <text>"fancy","tradional","fruity","heavy"</text>
         </outputValues>
       </output>
-      <output id="OutputClause_0v9lusi" typeRef="string" />
       <rule id="DecisionRule_1028on2">
         <inputEntry id="UnaryTests_1vk5ql9">
           <text></text>
@@ -68,9 +64,6 @@
         <outputEntry id="LiteralExpression_0pktly8">
           <text>"fancy"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0yqthci">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_0cmc48n">
         <inputEntry id="UnaryTests_1piba07">
@@ -86,10 +79,7 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0a934rc">
-          <text>"tradional"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_01mskm7">
-          <text></text>
+          <text>"traditional"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0gztx2r">
@@ -108,9 +98,6 @@
         <outputEntry id="LiteralExpression_1pmc1xs">
           <text>"fruity"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_17gq7w3">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_17amg4o">
         <inputEntry id="UnaryTests_0iopd80">
@@ -128,9 +115,6 @@
         <outputEntry id="LiteralExpression_0kppy7s">
           <text>"heavy"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0fsa8mz">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_1mqh08s">
         <inputEntry id="UnaryTests_1ue99u2">
@@ -147,9 +131,6 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_0d4h2w1">
           <text>"basic"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0kxu9jr">
-          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
@@ -182,28 +163,6 @@
           <text>"vegan","glutenfree","sugarfree","low-carb","no special diet"</text>
         </outputValues>
       </output>
-      <rule id="DecisionRule_089cz8c">
-        <inputEntry id="UnaryTests_0sutv9g">
-          <text>not("egg","milk","butter","creamcheese")</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1faapsi">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0joxbh3">
-          <text>"vegan"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0qs5qsk">
-        <inputEntry id="UnaryTests_1py6h31">
-          <text>not("flour")</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0w3c6tf">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1n11aef">
-          <text>"glutenfree"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0a25qxy">
         <inputEntry id="UnaryTests_1cdwzl2">
           <text>"flour"</text>
@@ -215,15 +174,15 @@
           <text>"low-carb"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0qmzh5f">
-        <inputEntry id="UnaryTests_0g3ggvr">
-          <text>not("sugar")</text>
+      <rule id="DecisionRule_0qs5qsk">
+        <inputEntry id="UnaryTests_1py6h31">
+          <text>not("flour")</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1vhpfo5">
+        <inputEntry id="UnaryTests_0w3c6tf">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_127scym">
-          <text>"sugarfree"</text>
+        <outputEntry id="LiteralExpression_1n11aef">
+          <text>"glutenfree"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1pnwv13">
@@ -361,7 +320,7 @@
       </rule>
       <rule id="DecisionRule_1yeuvhg">
         <inputEntry id="UnaryTests_1fiesxb">
-          <text>[5.60-8.00]</text>
+          <text>[5.60..8.00]</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0jk0s4n">
           <text>"average"</text>
@@ -379,7 +338,6 @@
   </decision>
   <inputData id="InputData_0jomfq6" name="price per piece" />
   <inputData id="InputData_0lzkym7" name="Fruits" />
-  <inputData id="InputData_0ypwwxy" name="Swirle" />
   <inputData id="InputData_07c9w8s" name="Layered" />
   <inputData id="InputData_1xcs01n" name="Chocolate" />
   <dmndi:DMNDI>
@@ -443,9 +401,6 @@
         <di:waypoint x="500" y="400" />
         <di:waypoint x="500" y="380" />
       </dmndi:DMNEdge>
-      <dmndi:DMNShape id="DMNShape_0h5a4be" dmnElementRef="InputData_0ypwwxy">
-        <dc:Bounds height="45" width="125" x="767" y="147" />
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_16gz5nj" dmnElementRef="InputData_07c9w8s">
         <dc:Bounds height="45" width="125" x="767" y="217" />
       </dmndi:DMNShape>
@@ -461,11 +416,6 @@
         <di:waypoint x="830" y="217" />
         <di:waypoint x="614" y="220" />
         <di:waypoint x="614" y="200" />
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="DMNEdge_19daqfr" dmnElementRef="InformationRequirement_1rtuquc">
-        <di:waypoint x="767" y="170" />
-        <di:waypoint x="670" y="160" />
-        <di:waypoint x="650" y="160" />
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
