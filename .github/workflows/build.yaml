@@ -22,14 +22,8 @@ jobs:
 
       - name: Upload Workflow Coverage
         run: >-
-          # Download script
-          curl -so flowcov.sh \
-            https://raw.githubusercontent.com/FlowSquad/flowcov-bash/0.2.1/flowcov.sh;
-
-          # Make it executable
+          curl -so flowcov.sh https://raw.githubusercontent.com/FlowSquad/flowcov-bash/0.2.1/flowcov.sh;
           chmod +x ./flowcov.sh;
-
-          # Upload the reports
           ./flowcov.sh --repository-id $REPOSITORY_ID --api-key $API_KEY;
         env:
           API_KEY: ${{ secrets.FLOWCOV_API_KEY }}
