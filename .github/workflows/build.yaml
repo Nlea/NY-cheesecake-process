@@ -22,7 +22,7 @@ jobs:
 
       - name: Upload Workflow Coverage
         run: >-
-          bash <(curl -s https://bash.flowcov.io/prepare-v0.3.0) -v
+          bash <(curl -s https://bash.flowcov.io/prepare-v0.3.0) -v -d
         env:
           FLOWCOV_API_KEY: ${{ secrets.FLOWCOV_API_KEY }}
           FLOWCOV_REPOSITORY_ID: ${{ secrets.FLOWCOV_REPOSITORY_ID }}
