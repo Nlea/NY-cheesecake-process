@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Cheesecake" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.2.0">
+  <decision id="ClassifyCake" name="Classify Cake">
+    <informationRequirement id="InformationRequirement_0yvea6p">
+      <requiredDecision href="#Decision_1jpo2tu" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1mfjz1x">
+      <requiredDecision href="#Decision_1ra30sy" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1qfhjw5">
+      <requiredDecision href="#ClassifyCosts" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_058gn17">
+      <requiredInput href="#InputData_07c9w8s" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1rtuquc">
+      <requiredInput href="#InputData_0ypwwxy" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_099s5n9">
+      <input id="Input_1" label="Diet">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>diet</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1e69s2q">
+          <text>"vegan","glutenfree","sugarfree","no diet","low-carb"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0zmytbk" label="Layered">
+        <inputExpression id="LiteralExpression_1pd9k4y" typeRef="boolean">
+          <text>layered</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1pex74s" label="Taste">
+        <inputExpression id="LiteralExpression_0pg07w9" typeRef="string">
+          <text>taste</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_021w3cf">
+          <text>"plain"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_10i1cwb" label="Cost">
+        <inputExpression id="LiteralExpression_1ntuc5p" typeRef="string">
+          <text>costgroup</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_16l1ezg">
+          <text>"cheap","average","expensive"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="Cake Category" name="cakeCategory" typeRef="string">
+        <outputValues id="UnaryTests_1rbnhl1">
+          <text>"fancy","tradional","fruity","heavy"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_0v9lusi" typeRef="string" />
+      <rule id="DecisionRule_1028on2">
+        <inputEntry id="UnaryTests_1vk5ql9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pcd7ug">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dnr5c1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00u3np6">
+          <text>"expensive"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pktly8">
+          <text>"fancy"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yqthci">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cmc48n">
+        <inputEntry id="UnaryTests_1piba07">
+          <text>not("vegan","glutenfree","sugarfree","low-carb")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yynkyo">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h3ahl9">
+          <text>"plain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0094g5t">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a934rc">
+          <text>"tradional"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01mskm7">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gztx2r">
+        <inputEntry id="UnaryTests_0uxnhfo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_019dvvg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hkc86p">
+          <text>"sweet-sour"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w8ixyt">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pmc1xs">
+          <text>"fruity"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17gq7w3">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17amg4o">
+        <inputEntry id="UnaryTests_0iopd80">
+          <text>"no diet"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lp9bzt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eg2806">
+          <text>"sweet", "creamy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03dghno">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kppy7s">
+          <text>"heavy"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fsa8mz">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mqh08s">
+        <inputEntry id="UnaryTests_1ue99u2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ocgv2p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1836cl2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0avuf85">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0d4h2w1">
+          <text>"basic"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kxu9jr">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_04sbjxa" name="Ingredients" />
+  <inputData id="InputData_0v002wg" name="Amount" />
+  <decision id="Decision_1jpo2tu" name="Classify Diet">
+    <informationRequirement id="InformationRequirement_14jfzfr">
+      <requiredInput href="#InputData_04sbjxa" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1049db9">
+      <requiredInput href="#InputData_0v002wg" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_16hha7m" hitPolicy="FIRST">
+      <input id="InputClause_1x1matw" label="Ingredient">
+        <inputExpression id="LiteralExpression_1hf2rqk" typeRef="string">
+          <text>ingredient</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1iz5gxe">
+          <text>"egg","milk","butter","creamcheese","sugar","flour"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_01f7zmx" label="Amount">
+        <inputExpression id="LiteralExpression_0et2bdi" typeRef="integer">
+          <text>amount</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1gvsvnm" label="Diet" name="diet" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_13828li">
+          <text>"vegan","glutenfree","sugarfree","low-carb","no special diet"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_089cz8c">
+        <inputEntry id="UnaryTests_0sutv9g">
+          <text>not("egg","milk","butter","creamcheese")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1faapsi">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0joxbh3">
+          <text>"vegan"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qs5qsk">
+        <inputEntry id="UnaryTests_1py6h31">
+          <text>not("flour")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w3c6tf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n11aef">
+          <text>"glutenfree"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0a25qxy">
+        <inputEntry id="UnaryTests_1cdwzl2">
+          <text>"flour"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10scg8i">
+          <text>&lt;100</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ru7fry">
+          <text>"low-carb"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qmzh5f">
+        <inputEntry id="UnaryTests_0g3ggvr">
+          <text>not("sugar")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vhpfo5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_127scym">
+          <text>"sugarfree"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pnwv13">
+        <inputEntry id="UnaryTests_1eegceb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17l8xek">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ljgy23">
+          <text>"no diet"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1ra30sy" name="Classify Taste">
+    <informationRequirement id="InformationRequirement_1lfok7a">
+      <requiredInput href="#InputData_0lzkym7" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1tvmvas">
+      <requiredInput href="#InputData_1xcs01n" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1j4mfqx" hitPolicy="FIRST">
+      <input id="InputClause_0b0gyxn" label="Fruits">
+        <inputExpression id="LiteralExpression_0k16031" typeRef="string">
+          <text>fruit</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1utwrht">
+          <text>"apple","strawberries","rasperries","lemon","pumpkin","blueberry","carrot"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0izk67s" label="Chocolate">
+        <inputExpression id="LiteralExpression_1otf97b" typeRef="string">
+          <text>chocolate</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1d3t71x">
+          <text>"dark","brown","white"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_19531zu" label="Taste" name="taste" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_0trxlu4">
+          <text>"sweet","sweet-sour","bitter-sweet","creamy","plain"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_0bspb12">
+        <inputEntry id="UnaryTests_0lyjkcw">
+          <text>not("apple","strawberries","rasperries","lemon","pumpkin","blueberry","carrot")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hco27n">
+          <text>not("dark","brown","white")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vxsnm4">
+          <text>"plain"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p1nuz6">
+        <inputEntry id="UnaryTests_081p8ly">
+          <text>"apple","rasperries","lemon"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hr2agv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_029ish4">
+          <text>"sweet-sour"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_158kvo5">
+        <inputEntry id="UnaryTests_1spj4bn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tm63dz">
+          <text>"dark","brown","white"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rhd1mr">
+          <text>"sweet"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17rci9b">
+        <inputEntry id="UnaryTests_0hy5dtp">
+          <text>"strawberries","blueberry"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d6x1aj">
+          <text>"dark","brown","white"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04074le">
+          <text>"sweet"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1f8cv89">
+        <inputEntry id="UnaryTests_0mipaiu">
+          <text>"pumpkin","carrot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1srdorj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mf5q18">
+          <text>"bitter-sweet"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vx6m75">
+        <inputEntry id="UnaryTests_0dicq0c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18wy7fa">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tqp3w5">
+          <text>"creamy"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="ClassifyCosts" name="Classify price">
+    <informationRequirement id="InformationRequirement_1i4obin">
+      <requiredInput href="#InputData_0jomfq6" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1vynmbl">
+      <input id="InputClause_0ajxd1g" label="Price per Piece in €">
+        <inputExpression id="LiteralExpression_0zz2l1o" typeRef="double">
+          <text>price</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_13ke06s" label="Costgroup" name="costgroup" typeRef="string">
+        <outputValues id="UnaryTests_1kbgc1p">
+          <text>"cheap","average","expensive"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_18tzk8k">
+        <inputEntry id="UnaryTests_0kqsf00">
+          <text>[0..5.50]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hqcjhf">
+          <text>"cheap"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yeuvhg">
+        <inputEntry id="UnaryTests_1fiesxb">
+          <text>[5.60-8.00]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jk0s4n">
+          <text>"average"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ec4ytt">
+        <inputEntry id="UnaryTests_06m5prv">
+          <text>&gt;8.00</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g4xbsk">
+          <text>"expensive"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0jomfq6" name="price per piece" />
+  <inputData id="InputData_0lzkym7" name="Fruits" />
+  <inputData id="InputData_0ypwwxy" name="Swirle" />
+  <inputData id="InputData_07c9w8s" name="Layered" />
+  <inputData id="InputData_1xcs01n" name="Chocolate" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="ClassifyCake">
+        <dc:Bounds height="80" width="180" x="470" y="120" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_04ay05b" dmnElementRef="InputData_04sbjxa">
+        <dc:Bounds height="45" width="125" x="857" y="468" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_15tmatp" dmnElementRef="InformationRequirement_14jfzfr">
+        <di:waypoint x="920" y="468" />
+        <di:waypoint x="740" y="400" />
+        <di:waypoint x="740" y="380" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1ubmpmt" dmnElementRef="InputData_0v002wg">
+        <dc:Bounds height="45" width="125" x="1017" y="468" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0frrg1f" dmnElementRef="InformationRequirement_1049db9">
+        <di:waypoint x="1080" y="468" />
+        <di:waypoint x="800" y="400" />
+        <di:waypoint x="800" y="380" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0k14qp0" dmnElementRef="InformationRequirement_0yvea6p">
+        <di:waypoint x="770" y="300" />
+        <di:waypoint x="578" y="220" />
+        <di:waypoint x="578" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1ow3wqz" dmnElementRef="Decision_1jpo2tu">
+        <dc:Bounds height="80" width="180" x="680" y="300" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0n9i86u" dmnElementRef="InformationRequirement_1mfjz1x">
+        <di:waypoint x="530" y="300" />
+        <di:waypoint x="542" y="220" />
+        <di:waypoint x="542" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0owc18d" dmnElementRef="Decision_1ra30sy">
+        <dc:Bounds height="80" width="180" x="440" y="300" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1klc0gx" dmnElementRef="ClassifyCosts">
+        <dc:Bounds height="80" width="180" x="210" y="300" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_025ntye" dmnElementRef="InformationRequirement_1qfhjw5">
+        <di:waypoint x="300" y="300" />
+        <di:waypoint x="506" y="220" />
+        <di:waypoint x="506" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_19db5s1" dmnElementRef="InputData_0jomfq6">
+        <dc:Bounds height="45" width="125" x="147" y="457" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_02si7s4" dmnElementRef="InformationRequirement_1i4obin">
+        <di:waypoint x="210" y="457" />
+        <di:waypoint x="300" y="400" />
+        <di:waypoint x="300" y="380" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0jo424s" dmnElementRef="InputData_0lzkym7">
+        <dc:Bounds height="45" width="125" x="357" y="468" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1pxel65" dmnElementRef="InformationRequirement_1lfok7a">
+        <di:waypoint x="420" y="468" />
+        <di:waypoint x="500" y="400" />
+        <di:waypoint x="500" y="380" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0h5a4be" dmnElementRef="InputData_0ypwwxy">
+        <dc:Bounds height="45" width="125" x="767" y="147" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_16gz5nj" dmnElementRef="InputData_07c9w8s">
+        <dc:Bounds height="45" width="125" x="767" y="217" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_03ternk" dmnElementRef="InputData_1xcs01n">
+        <dc:Bounds height="45" width="125" x="498" y="469" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_17osrhj" dmnElementRef="InformationRequirement_1tvmvas">
+        <di:waypoint x="561" y="469" />
+        <di:waypoint x="560" y="400" />
+        <di:waypoint x="560" y="380" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1omwukq" dmnElementRef="InformationRequirement_058gn17">
+        <di:waypoint x="830" y="217" />
+        <di:waypoint x="614" y="220" />
+        <di:waypoint x="614" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_19daqfr" dmnElementRef="InformationRequirement_1rtuquc">
+        <di:waypoint x="767" y="170" />
+        <di:waypoint x="670" y="160" />
+        <di:waypoint x="650" y="160" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
