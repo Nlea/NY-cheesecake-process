@@ -75,9 +75,9 @@ public class ProcessScenarioTest {
 
     @Test
     public void testMoreThanOneCheesecake() {
-
         when(tastecheesecake.waitsAtUserTask("TasteCheesecakeTask")).thenReturn((task) -> {
             taskService().handleEscalation(task.getId(), "es_MoreCheesecake", withVariables("numberOfCakes", 2));
+            task.complete(withVariables("approved", true));
         }, (task) -> {
             task.complete(withVariables("approved", true));
         });
