@@ -1,10 +1,10 @@
 package com.camunda.flowcovexample;
 
 
+import io.flowcov.camunda.junit.FlowCovProcessEngineRuleBuilder;
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.ProcessEngineRule;
 import org.camunda.bpm.engine.test.mock.Mocks;
-import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
 import org.camunda.bpm.scenario.ProcessScenario;
 import org.camunda.bpm.scenario.Scenario;
 import org.junit.Before;
@@ -25,7 +25,7 @@ public class ProcessScenarioTest {
     public static final String PROCESS_KEY = "myNYCheesecakeProcess";
     @Rule
     @ClassRule
-    public static ProcessEngineRule rule = TestCoverageProcessEngineRuleBuilder.create().build();
+    public static ProcessEngineRule rule = FlowCovProcessEngineRuleBuilder.create().build();
 
     @Mock
     private ProcessScenario tastecheesecake;
